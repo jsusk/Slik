@@ -1,0 +1,28 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.product {
+	padding: 2px;
+	height:	25px;
+}
+
+.product_name{
+	width: 300px;
+	float: left;
+}
+
+.product_precio{
+	width: 100px;
+	float: left;
+}
+
+.product_edit{
+	width: 100px;
+	float: left;
+}
+
+.product_delete{
+	width: 100px;
+	float: left;
+}

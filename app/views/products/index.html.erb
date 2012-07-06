@@ -1,0 +1,21 @@
+<h1>Productos</h1>
+<%= link_to "Nuevo producto", new_product_path %>
+<br/>
+<br/>
+<% for product in @products %> 
+<div id="product_<%=product.id%>" class="product">
+		<div class="product_name">
+			<%=product.name%>
+		</div>
+		<div class="product_precio">
+			<%=product.precio%>
+		</div>
+		<div class="product_edit">
+			<%= link_to 'Editar', edit_product_path(product.id) %>
+		</div>
+		<div class="product_delete">
+			<%= link_to 'Eliminar', product, :confirm => "¿Esta seguro?",
+			:method => :delete %>
+		</div>
+	</div>
+<%end%>
