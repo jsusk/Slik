@@ -13,16 +13,18 @@
  */
 
  .fila{
-	 height: 25px;
+	 height: 35px;
+	 
  }
 
  .campo{
-	 width: 200px;
+	 width: 100px;
 	 float: left;
 	 font-weight:bold;
  }
 
  .valor{
-	 width: 200px;
+	 width: 300px;
 	 float: left;
  }
+ 
