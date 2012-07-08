@@ -1,0 +1,22 @@
+<h1>Detalles del combo</h1>
+<div class="fila">
+	<div class="campo">
+		Nombre:
+	</div>
+	<div class="valor">
+		<%=@combo.nombre%>
+	</div>	
+</div>
+<div class="fila">
+	<div class="campo">
+		Precio:
+	</div>
+	<div class="valor">
+		<%=@combo.precio%>
+	</div>
+</div>
+<h2>Productos</h2>
+<ul>
+<% @combo.products.each do	|p| %>
+		<li><%=p.name%>  $<%=p.precio%></li>
+<% end %>

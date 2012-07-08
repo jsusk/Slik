@@ -11,3 +11,18 @@
  *= require_self
  *= require_tree .
  */
+
+ .fila{
+	 height: 25px;
+ }
+
+ .campo{
+	 width: 200px;
+	 float: left;
+	 font-weight:bold;
+ }
+
+ .valor{
+	 width: 200px;
+	 float: left;
+ }

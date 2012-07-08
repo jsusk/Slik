@@ -30,4 +30,15 @@ class ProductsController < ApplicationController
 		redirect_to products_path
 	end
 
+	def buscar
+		nombre = params[:nombre]
+		#render :text => params.collect
+		productos = Product.where("name like '%#{nombre}%'")
+		combos = ECombo.where("nombre like '%#{nombre}%'")
+		@final = productos | combos
+		respond_to do |format|
+			format.js
+		end
+	end
+
 end

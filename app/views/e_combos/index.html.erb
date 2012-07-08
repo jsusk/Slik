@@ -1,0 +1,14 @@
+<h1>Lista de combos</h1>
+<% for combo in @combos %>
+<div id="combo_<%=combo.id%>" class="combo">
+	<div class="combo_name">
+		<%=combo.nombre%>
+	</div>
+	<div class="combo_precio">
+		<%=combo.precio%>
+	</div>
+	<div class="combo_ver">
+		<%=link_to "Ver", e_combo_path(combo.id) %> 
+	</div>
+</div>
+<%end%> 
