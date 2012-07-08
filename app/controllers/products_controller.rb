@@ -40,5 +40,9 @@ class ProductsController < ApplicationController
 			format.js
 		end
 	end
+	
+	def listar
+
+	end
 
 end

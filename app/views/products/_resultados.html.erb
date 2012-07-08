@@ -5,7 +5,7 @@
 	<% else %>
 		<div class="campo"><%=producto.nombre%></div>
 	<% end %>
-		<div class="valor"><%=link_to "Agregar", ''%></div>
+		<div class="valor"><%=button_to "Agregar", e_sale_path(producto.id),:method => :put%></div>
 	</div>	
 <%end%>
 	

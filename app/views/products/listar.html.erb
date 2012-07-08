@@ -1,4 +1,3 @@
-<h1>Buscar</h1>
 <%=form_tag("/products/buscar", :method => "get", :remote=>true, :update=>"product_list") do %>
 	<%=label_tag :nombre , "Nombre"%>
 	<%=text_field_tag :nombre%>

@@ -1,0 +1,4 @@
+<h1>Nueva Venta</h1>
+<p>ID: <%=@nueva_venta.id%>
+<%= render :template => 'products/listar'%>
+<%= button_to "Cancelar", e_sale_path(@nueva_venta.id), :method => :delete %>
