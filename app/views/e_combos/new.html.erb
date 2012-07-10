@@ -1,0 +1,30 @@
+<h1>Nuevo Combo</h1>
+<%= form_for @ecombo do |combo| %>
+  <div class="fila">
+    <div class="campo">
+      <%=combo.label :nombre%>
+    </div> 
+    <div class="valor">
+      <%=combo.text_field :nombre%>
+    </div>
+  </div>
+    <div class="fila">
+    <div class="campo">
+      <%=combo.label :precio%>
+    </div> 
+    <div class="valor">
+      <%=combo.text_field :precio%>
+    </div>
+  </div>
+  <h2> Productos</h2>
+
+  <%= combo.fields_for :d_combos do |builder| %> 
+    <p>
+      <%= builder.label :product_id %>
+      <%= builder.text_field :product_id%>
+    </p>
+  <% end %>
+  <div class="fila">
+    <%=combo.submit%>
+  </div>
+<% end %>
