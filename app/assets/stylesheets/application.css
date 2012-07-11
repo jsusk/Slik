@@ -11,7 +11,9 @@
  *= require_self
  *= require_tree .
  */
-
+/*
+ *= require jquery.ui.autocomplete
+ */
  .fila{
 	 height: 35px;
 	 

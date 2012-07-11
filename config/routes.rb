@@ -1,7 +1,11 @@
 Slik::Application.routes.draw do
 
   #get "products/index"
-	resources :products 
+	resources :products do
+    collection do
+      get 'search_on_product'
+    end
+  end
 	resources :e_combos
   # The priority is based upon order of creation:
   # first created -> highest priority.

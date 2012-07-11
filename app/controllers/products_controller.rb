@@ -41,4 +41,15 @@ class ProductsController < ApplicationController
 		end
 	end
 
+  def search_on_product
+    products = Product.where("name like '%#{params[:term]}%'")
+    result = []
+    products.each do |c|
+      result << {:label => c.name, :value => c.id}
+    end
+    render :json => result 
+  end
+
+
+
 end
