@@ -1,7 +1,16 @@
-<p>
-<ul>
-  <li><%=f.label :product_name%></li>
+<ul class="item">
+  <li>
+    <% if p.nil? %>
+      <%=f.label :product_name%>
+      <%= f.hidden_field :product_id, :value => "#val"%>
+      <%= link_to_function "Eliminar", "remove_fields(this)"%>
+      <%= f.hidden_field :_destroy %>
+    <% else %>
+      <%=f.label p[f.object.product_id]%>
+      <%= f.hidden_field :product_id%>
+      <%= link_to_function "Eliminar", "remove_fields(this)"%>
+      <%= f.hidden_field :_destroy %>
+    <% end %>
+  </li>
 </ul>
-<%= f.hidden_field :product_id, :value => "#val"%>
-</p>
 

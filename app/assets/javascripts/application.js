@@ -20,13 +20,16 @@ function add_fields(link,hidden ,association, content) {
   var valexp = new RegExp("#val","g");
   var nomexp = new RegExp("Product name","g");
 
-
-  
   var datos = jQuery.parseJSON($("#"+hidden).val());
   
   content = content.replace(valexp,datos.value);
   content = content.replace(nomexp,datos.label); 
   $(".ui-autocomplete-input").val("")
   $(link).parent().after(content.replace(regexp, new_id));
+}
+
+function remove_fields(link){
+  $(link).next("input[type=hidden]").val("1");
+  $(link).closest(".item").hide();
 }
 

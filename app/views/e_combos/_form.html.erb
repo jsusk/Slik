@@ -19,7 +19,8 @@
       :locals => {:f => combo,:asoc => :d_combos} %>
 
     <%= combo.fields_for :d_combos do |builder| %> 
-      <%= render 'd_combo_fields', :f => builder%>
+      <%= render :partial => 'd_combo_fields', 
+      :locals => {:f => builder, :p => @pro_hash}%>
     <% end %>
   <br />
   <br />

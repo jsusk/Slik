@@ -13,8 +13,12 @@
 	<div class="combo_ver">
 		<%=link_to "Ver", e_combo_path(combo.id) %> 
 	</div>
+  <div class="combo_editar">
+    <%= link_to "Editar", edit_e_combo_path(combo.id) %>
+  </div>
   <div class="combo_eliminar">
     <%=link_to "Eliminar",combo,:confirm => "¿Esta seguro?", :method =>:delete %> 
   </div>
+
 </div>
 <%end%> 
