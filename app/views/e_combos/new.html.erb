@@ -1,36 +1,3 @@
 <h1>Nuevo Combo</h1>
-<%= form_for @ecombo do |combo| %>
-  <div class="fila">
-    <div class="campo">
-      <%=combo.label :nombre%>
-    </div> 
-    <div class="valor">
-      <%=combo.text_field :nombre%>
-    </div>
-  </div>
-    <div class="fila">
-    <div class="campo">
-      <%=combo.label :precio%>
-    </div> 
-    <div class="valor">
-      <%=combo.text_field :precio%>
-    </div>
-  </div>
-  <h2> Productos</h2>
-  <div class="fila">
-    <%= label_tag :p_name, "Producto"%>
-    <%= text_field_tag(:product_name)%>
-    <%= hidden_field_tag(:product_id)%>
-    <%= button_to_add_fields "Agregar","product_id", 
-                              combo, :d_combos  %>
-  </div>
-  <%= combo.fields_for :d_combos do |builder| %> 
-    <p>
-      <%= builder.label :product_id %>
-      <%= builder.text_field :product_id%>
-    </p>
-  <% end %>
-  <div class="fila">
-    <%=combo.submit%>
-  </div>
-<% end %>
+<%= render 'form' %>
+

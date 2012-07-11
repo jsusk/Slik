@@ -9,6 +9,7 @@ class ECombosController < ApplicationController
 
 	def new
 	  @ecombo = ECombo.new
+    4.times{ @ecombo.d_combos.build}
 	end
   def create
     ECombo.create(params[:e_combo])

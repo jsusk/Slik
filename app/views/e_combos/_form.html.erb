@@ -1,0 +1,29 @@
+<%= form_for @ecombo do |combo| %>
+  <div class="fila">
+    <div class="campo">
+      <%=combo.label :nombre%>
+    </div> 
+    <div class="valor">
+      <%=combo.text_field :nombre%>
+    </div>
+  </div>
+    <div class="fila">
+    <div class="campo">
+      <%=combo.label :precio%>
+    </div> 
+    <div class="valor">
+      <%=combo.text_field :precio%>
+    </div>
+  </div>
+  <%= render :partial => 'products/autocomplete', 
+      :locals => {:f => combo,:asoc => :d_combos} %>
+
+    <%= combo.fields_for :d_combos do |builder| %> 
+      <%= render 'd_combo_fields', :f => builder%>
+    <% end %>
+  <br />
+  <br />
+  <div class="fila">
+    <%=combo.submit%>
+  </div>
+<% end %>

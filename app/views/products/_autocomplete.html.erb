@@ -1,0 +1,9 @@
+<h2> Productos</h2>
+<div class="fila">
+   <%= label_tag :p_name, "Producto"%>
+   <%= text_field_tag(:product_name)%>
+   <%= hidden_field_tag(:product_id)%>
+   <%= button_to_add_fields "Agregar","product_id", 
+                              f, asoc  %>
+</div>
+

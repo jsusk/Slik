@@ -18,12 +18,15 @@ function add_fields(link,hidden ,association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
   var valexp = new RegExp("#val","g");
-  //alert($("#"+hidden).val())
-  var datos = jQuery.parseJSON($("#"+hidden).val());
-  content = content.replace(valexp,datos.value);
+  var nomexp = new RegExp("Product name","g");
+
+
   
+  var datos = jQuery.parseJSON($("#"+hidden).val());
+  
+  content = content.replace(valexp,datos.value);
+  content = content.replace(nomexp,datos.label); 
   $(".ui-autocomplete-input").val("")
-  content = "<ul><li>"+ datos.label + "</li></ul>" + content
   $(link).parent().after(content.replace(regexp, new_id));
 }
 
