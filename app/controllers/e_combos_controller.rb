@@ -22,13 +22,20 @@ class ECombosController < ApplicationController
   
   def update
     @ecombo = ECombo.find(params[:id])
-    @ecombo.update_attributes(params[:e_combo])
-    redirect_to e_combos_path
+    if @ecombo.update_attributes(params[:e_combo])
+      redirect_to e_combos_path
+    else
+      render :action => "edit"
+    end
   end
 
   def create
-    ECombo.create(params[:e_combo])
-    redirect_to e_combos_path
+    @ecombo = ECombo.new(params[:e_combo])
+    if @ecombo.save 
+      redirect_to e_combos_path, notice: "Combo dado de alta"
+    else
+      render :action => "new"
+    end
   end
   def destroy
     ECombo.destroy params[:id]

@@ -1,4 +1,5 @@
 <%= form_for @ecombo do |combo| %>
+  <%= render "shared/error_messages", :target => @ecombo %>
   <div class="fila">
     <div class="campo">
       <%=combo.label :nombre%>

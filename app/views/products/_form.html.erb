@@ -1,5 +1,6 @@
-<%= form_for (@product) do |f|%>
-	<div class="fila">
+<%= form_for(@product) do |f|%>
+  <%= render "shared/error_messages", :target => @product%>
+  <div class="fila">
 		<div class="campo">
 			<%=f.label :name%>
 		</div>

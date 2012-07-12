@@ -7,8 +7,12 @@ class ProductsController < ApplicationController
 	end
 
 	def create 
-		Product.create params[:product]
-		redirect_to products_path
+		@product = Product.new params[:product]
+		if @product.save
+      redirect_to products_path, notice: "Producto dado de alta"
+    else
+      render :action => "new"
+    end
 	end
 
 	def edit
@@ -17,11 +21,11 @@ class ProductsController < ApplicationController
 	end
 
 	def update
-		product = Product.find params[:id]
-		if product.update_attributes params[:product]
+		@product = Product.find params[:id]
+		if @product.update_attributes params[:product]
 			redirect_to products_path
 		else
-			redirect_to :back
+		  render :action => "edit"
 		end
 	end
 
