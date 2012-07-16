@@ -1,0 +1,11 @@
+<h1>Usuario</h1>
+<%= link_to "Nuevo Usuario", new_user_path %>
+<br />
+<br />
+<% for usr in @users %>
+    <div class="fila">
+      <div class="campo">
+        <%= usr.username %>
+      </div>
+    </div>
+<% end %>

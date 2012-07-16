@@ -14,6 +14,9 @@
 /*
  *= require jquery.ui.autocomplete
  */
+
+@import "bootstrap";
+
  .fila{
 	 height: 35px;
 	 

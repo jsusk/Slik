@@ -7,12 +7,14 @@ gem 'rails', '3.2.6'
 gem 'client_side_validations'
 gem 'sqlite3'
 gem 'rails-i18n'
+gem 'sorcery'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'jquery-ui-rails'
+  gem 'bootstrap-sass', '~> 2.0.4.0'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 

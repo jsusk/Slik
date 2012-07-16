@@ -1,5 +1,15 @@
 Slik::Application.routes.draw do
 
+  get "sessions/new"
+
+  #get "users/new"
+
+  get "logout" => "sessions#destroy", :as => "logout"
+  get "login" => "sessions#new", :as => "login"
+  resources :users
+  resources :sessions
+
+
   #get "products/index"
 	resources :products do
     collection do
