@@ -2,11 +2,15 @@
   <li>
     <% if p.nil? %>
       <%=f.label :product_name%>
+      <%=f.label :cantidad%>
+      <%= f.text_field :cantidad, :value=>"1"%>
       <%= f.hidden_field :product_id, :value => "#val"%>
       <%= link_to_function "Eliminar", "remove_fields(this)"%>
       <%= f.hidden_field :_destroy %>
     <% else %>
       <%=f.label p[f.object.product_id]%>
+      <%=f.label :cantidad%>
+      <%=f.text_field :cantidad %>
       <%= f.hidden_field :product_id%>
       <%= link_to_function "Eliminar", "remove_fields(this)"%>
       <%= f.hidden_field :_destroy %>

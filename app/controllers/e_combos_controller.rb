@@ -4,7 +4,8 @@ class ECombosController < ApplicationController
   end
 
 	def show
-		@combo = ECombo.find(params[:id])
+		@combo  = ECombo.find(params[:id])
+    @dcombo = DCombo.includes(:product).where("e_combo_id = #{params[:id]}")
 	end
 
 	def new
@@ -39,6 +40,6 @@ class ECombosController < ApplicationController
   end
   def destroy
     ECombo.destroy params[:id]
-    redirect_to e_combos_path
+    redirect_to e_combos_path, :notice => "Eliminado correctamente"
   end
 end
