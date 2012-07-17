@@ -14,9 +14,8 @@
 //= require jquery_ujs
 //= require_tree .
 //= require jquery.ui.autocomplete
-//= require rails.validations
-// Loads all Bootstrap javascripts
-//= require bootstrap
+//= require bootstrap-alert
+
 function add_fields(link,hidden ,association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
@@ -30,6 +29,7 @@ function add_fields(link,hidden ,association, content) {
   $(".ui-autocomplete-input").val("")
   $(link).parent().after(content.replace(regexp, new_id));
 }
+
 function remove_fields(link){
   $(link).next("input[type=hidden]").val("1");
   $(link).closest(".item").hide();

@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
 	def create 
 		@product = Product.new params[:product]
 		if @product.save
-      redirect_to products_path, notice: "Producto dado de alta"
+      redirect_to products_path, :flash =>{:success=>"Producto dado de alta"}
     else
       render :action => "new"
     end
@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
 	def update
 		@product = Product.find params[:id]
 		if @product.update_attributes params[:product]
-			redirect_to products_path
+			redirect_to products_path, notice:"Modificado correctamente"
 		else
 		  render :action => "edit"
 		end
@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
 
 	def destroy
 		Product.destroy params[:id]
-		redirect_to products_path
+		redirect_to products_path, notice:"Eliminado correctamente"
 	end
 
 	def buscar

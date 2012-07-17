@@ -1,41 +1,16 @@
 <h1>Nuevo Usuario</h1>
-<%= form_for @user do |f| %>
+<%= form_for @user, :html=>{:class=>"well"} do |f| %>
   <%= render "shared/error_messages", :target => @user %>
-<div class="fila">
-  <div class="campo">
     <%= f.label :username %>
-  </div>
-  <div class="valor">
     <%= f.text_field :username %>
-  </div>
-</div>
-<div class="fila">
-  <div class="campo">
     <%= f.label :email %>
-  </div>
-  <div class="valor">
     <%= f.text_field :email %>
-  </div>
-</div>
-<div class="fila">
-  <div class="campo">
     <%= f.label :password %>
-  </div>
-  <div class="valor">
     <%= f.password_field :password %>
-  </div>
-</div>
-<div class="fila">
-  <div class="campo">
     <%= f.label :password_confirmation %>
-  </div>
-  <div class="valor">
     <%= f.password_field :password_confirmation %>
-  </div>
-</div>
-<div class="fila">
-  <%= f.submit %>
-</div>
+    <br />
+  <%= f.submit :class=>"btn btn-primary" %>
 <% end %>
 
 

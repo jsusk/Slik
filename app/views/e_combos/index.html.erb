@@ -2,23 +2,31 @@
 <%= link_to "Nuevo" ,new_e_combo_path %>
 <br />
 <br />
+<table class="table">
+<tr>
+  <th>Combo</th>
+  <th>Precio</th>
+  <th>Accion</th>
+  <th>Accion</th>
+  <th>Accion</th>
+</tr>
 <% for combo in @combos %>
-<div id="combo_<%=combo.id%>" class="combo">
-	<div class="combo_name">
-		<%=combo.nombre%>
-	</div>
-	<div class="combo_precio">
+<tr>
+	<td>
+    <%=combo.nombre%>
+	</td>
+	<td>
 		<%=combo.precio%>
-	</div>
-	<div class="combo_ver">
+	</td>
+	<td>
 		<%=link_to "Ver", e_combo_path(combo.id) %> 
-	</div>
-  <div class="combo_editar">
+	</td>
+  <td>
     <%= link_to "Editar", edit_e_combo_path(combo.id) %>
-  </div>
-  <div class="combo_eliminar">
+  </td>
+  <td>
     <%=link_to "Eliminar",combo,:confirm => "¿Esta seguro?", :method =>:delete %> 
-  </div>
-
-</div>
-<%end%> 
+  </td>
+</tr>
+<%end%>
+</table> 

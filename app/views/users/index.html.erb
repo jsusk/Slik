@@ -1,11 +1,25 @@
 <h1>Usuario</h1>
+<br />
 <%= link_to "Nuevo Usuario", new_user_path %>
 <br />
 <br />
+<table class="table table-striped">
+  <tr>
+    <th>Usuario</th>
+    <th>Email</th>
+    <th>Accion</th>
+    <th>Reset<th>
+  </tr>
 <% for usr in @users %>
-    <div class="fila">
-      <div class="campo">
+    <tr>
+      <td>
         <%= usr.username %>
-      </div>
-    </div>
+      </td>
+      <td><%=usr.email%></td>
+      <td><%=link_to "Eliminar"%></td>
+      <td><%=link_to "Resetear password"%></td>
+    </tr>
 <% end %>
+  
+  
+</table>

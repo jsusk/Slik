@@ -1,25 +1,9 @@
-<%= form_for(@product) do |f|%>
+<%= form_for(@product, :html => {:class=>"well"}) do |f|%>
   <%= render "shared/error_messages", :target => @product%>
-  <div class="fila">
-		<div class="campo">
 			<%=f.label :name%>
-		</div>
-		<div class="valor">
 			<%=f.text_field :name%>
-		</div>
-	</div>
-	<div class="fila">
-		<div class="campo">
 			<%=f.label :precio%>
-		</div>
-		<div class="valor">
 			<%=f.text_field :precio%>
-		</div>
-	</div>
-	<div class="fila">
-		<div class="campo"></div>
-		<div class="valor">
-			<%=f.submit%>
-		</div>
-	</div>
+      <br/>
+			<%=f.submit :class=>"btn"%>
 <%end%>

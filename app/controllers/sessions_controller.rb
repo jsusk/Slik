@@ -5,14 +5,14 @@ class SessionsController < ApplicationController
   def create
     user = login(params[:username], params[:password])
     if user 
-      redirect_back_or_to users_path, :notice => "Logged in!" 
+      redirect_back_or_to users_path, :success => "Logged in!" 
     else
-      flash.now.alert = "Usuario o password invalido."
+      flash.now[:error] = "Usuario o password invalido."
       render :new 
     end
   end
   def destroy
     logout
-    redirect_to users_path, :notice => "Logged out!"
+    redirect_to users_path, :success => "Logged out!"
   end
 end

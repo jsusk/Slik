@@ -1,6 +1,7 @@
 <% if target.errors.any? %>  
-<div id="errorExplanation">  
-  <h2>Existen errores</h2>
+<div class="alert alert-error">  
+  <button class="close" data-dismiss="alert">×</button>
+  <strong>Existen errores</strong>
   <ul>  
   <% target.errors.full_messages.each do |msg| %>  
     <li><%= msg %></li>  

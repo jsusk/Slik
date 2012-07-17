@@ -1,17 +1,18 @@
 <h1>Detalles del combo</h1>
-<div class="fila">
-	<div class="campo">
-		Nombre:
+<div class="well">
+<div class="row">
+	<div class="span2">
+		<strong>Nombre:</strong>
 	</div>
-	<div class="valor">
+	<div class="span2">
 		<%=@combo.nombre%>
 	</div>	
 </div>
-<div class="fila">
-	<div class="campo">
-		Precio:
+<div class="row">
+	<div class="span2">
+		<strong>Precio:</strong>
 	</div>
-	<div class="valor">
+	<div class="span2">
 		<%=@combo.precio%>
 	</div>
 </div>
@@ -20,3 +21,6 @@
 <% @combo.products.each do	|p| %>
 		<li><%=p.name%>  $<%=p.precio%></li>
 <% end %>
+</ul>
+<%= link_to "Todos los combos", e_combos_path, :class=>"btn btn-primary"%>
+</div>

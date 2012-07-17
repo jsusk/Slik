@@ -10,7 +10,7 @@ module ApplicationHelper
     
     end 
     button_to_function name, 
-      "add_fields(this,'#{hidden}','#{association}','#{escape_javascript(fields)}')"
+      "add_fields(this,'#{hidden}','#{association}','#{escape_javascript(fields)}')", :class=>"btn"
   end
   
 end

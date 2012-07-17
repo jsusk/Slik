@@ -16,7 +16,10 @@
   <% end %>
 </div>
 <% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <%= content_tag :div, :class => "alert alert-#{name}" do %>
+    <button class="close" data-dismiss="alert">×</button>
+    <%= msg%> 
+  <% end %>
 <% end %>
 
 <%= yield %>

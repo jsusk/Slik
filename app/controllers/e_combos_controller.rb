@@ -23,7 +23,7 @@ class ECombosController < ApplicationController
   def update
     @ecombo = ECombo.find(params[:id])
     if @ecombo.update_attributes(params[:e_combo])
-      redirect_to e_combos_path
+      redirect_to @ecombo, :flash => {:success => "Combo modificado exitosamente"}
     else
       render :action => "edit"
     end
@@ -32,7 +32,7 @@ class ECombosController < ApplicationController
   def create
     @ecombo = ECombo.new(params[:e_combo])
     if @ecombo.save 
-      redirect_to e_combos_path, notice: "Combo dado de alta"
+      redirect_to e_combos_path, :flash =>{success:"Combo dado de alta"}
     else
       render :action => "new"
     end
