@@ -1,5 +1,5 @@
 class Cart < ActiveRecord::Base
-  has_many :d_sales
+  has_many :d_sales, :dependent => :destroy
   attr_accessible :fecha
 
   def total_price

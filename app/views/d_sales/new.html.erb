@@ -50,8 +50,14 @@
   <td></td><td></td><td>Total:</td><td><%=@cart.total_price%></td>
 </tr>
 </table>
-<%=button_to "Finalizar Venta"%>
-
+<div class="row">
+  <div class="span2 offset4">
+    <%= button_to "Cancelar", d_sale_path(@cart.id), :method=>:delete, :class=>"btn"%>
+  </div>  
+  <div class="span2">
+    <%= button_to "Terminar venta", e_sales_path, :class=>"btn btn-primary"%>
+  </div>
+</div>
 
   
 
