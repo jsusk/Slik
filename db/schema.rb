@@ -11,18 +11,43 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120716111559) do
+ActiveRecord::Schema.define(:version => 20120720021229) do
+
+  create_table "carts", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.date     "fecha"
+  end
 
   create_table "d_combos", :force => true do |t|
     t.integer  "e_combo_id"
     t.integer  "product_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "cantidad"
   end
 
   add_index "d_combos", ["e_combo_id"], :name => "index_d_combos_on_e_combo_id"
   add_index "d_combos", ["product_id"], :name => "index_d_combos_on_product_id"
 
+<<<<<<< HEAD
+=======
+  create_table "d_sales", :force => true do |t|
+    t.integer  "cantidad"
+    t.integer  "product_id"
+    t.integer  "e_combo_id"
+    t.integer  "cart_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "e_sale_id"
+  end
+
+  add_index "d_sales", ["cart_id"], :name => "index_d_sales_on_cart_id"
+  add_index "d_sales", ["e_combo_id"], :name => "index_d_sales_on_e_combo_id"
+  add_index "d_sales", ["e_sale_id"], :name => "index_d_sales_on_e_sale_id"
+  add_index "d_sales", ["product_id"], :name => "index_d_sales_on_product_id"
+
+>>>>>>> upstream/master
   create_table "e_combos", :force => true do |t|
     t.string   "nombre"
     t.float    "precio"

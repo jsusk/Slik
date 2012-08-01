@@ -4,7 +4,8 @@ class ECombosController < ApplicationController
   end
 
 	def show
-		@combo = ECombo.find(params[:id])
+		@combo  = ECombo.find(params[:id])
+    @dcombo = DCombo.includes(:product).where("e_combo_id = #{params[:id]}")
 	end
 
 	def new
@@ -39,6 +40,20 @@ class ECombosController < ApplicationController
   end
   def destroy
     ECombo.destroy params[:id]
-    redirect_to e_combos_path
+    redirect_to e_combos_path, :notice => "Eliminado correctamente"
   end
+  
+  def search_on_p_and_c
+    products = Product.where("name like '%#{params[:term]}%'")
+    combos = ECombo.where("nombre like '%#{params[:term]}%'")
+    @final = products | combos
+    result = []
+    @final.each do |c|
+      tipo = c.respond_to?(:name) ? :product : :combo
+
+      result << {:label=> (c.respond_to?(:name) ? c.name : c.nombre), :value=>{:id=>c.id, :tipo=>tipo}}
+    end
+    render :json=>result
+  end
+
 end

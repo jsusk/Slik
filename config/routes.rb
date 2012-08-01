@@ -1,8 +1,6 @@
 Slik::Application.routes.draw do
 
-  get "sessions/new"
 
-  #get "users/new"
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
@@ -16,7 +14,17 @@ Slik::Application.routes.draw do
       get 'search_on_product'
     end
   end
-	resources :e_combos
+	
+  resources :e_combos do
+    collection do
+      get 'search_on_p_and_c'
+    end
+  end
+
+  resources :d_sales
+
+  resources :e_sales
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

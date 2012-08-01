@@ -18,8 +18,8 @@
 </div>
 <h2>Productos</h2>
 <ul>
-<% @combo.products.each do	|p| %>
-		<li><%=p.name%>  $<%=p.precio%></li>
+<% @dcombo.each do	|p| %>
+		<li><%=p.cantidad%> X <%=p.product.name%>  $<%=p.product.precio%></li>
 <% end %>
 </ul>
 <%= link_to "Todos los combos", e_combos_path, :class=>"btn btn-primary"%>

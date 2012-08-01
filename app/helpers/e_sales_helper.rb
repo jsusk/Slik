@@ -1,0 +1,2 @@
+module ESalesHelper
+end
