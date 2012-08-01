@@ -1,0 +1,9 @@
+<%= form_for(@supplier, :html => {:class=>"well"}) do |f| %>
+	<%= render "shared/error_messages", :target => @supplier%>
+		<%=f.label :rfc%>
+		<%=f.text_field :rfc%>
+		<%=f.label :nombre%>
+		<%=f.text_field :nombre%>
+      	<br/>
+		<%=f.submit :class=>"btn"%>
+<%end%>

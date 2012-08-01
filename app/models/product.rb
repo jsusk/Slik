@@ -5,6 +5,7 @@ class Product < ActiveRecord::Base
 	has_many :d_combos, :dependent => :destroy
 	has_many :e_combos, :through => :d_combos
   has_many :d_sales
+  has_many :d_suppliers
 
 
   

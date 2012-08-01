@@ -1,0 +1,20 @@
+<h1>Proveedores</h1>
+<br>
+<%= link_to "Nuevo Proveedor", new_supplier_path, :class=>"btn btn-primary" %>
+<br/><br/>
+<table class="table">
+	<tr>
+		<th>RFC</th>
+		<th>Nombre</td>
+		<th>Editar</td>
+		<th>Eliminar</td>
+	</tr>
+	<%@supplier.each do |s|%>
+		<tr>
+			<td><%= s.rfc%></td>
+			<td><%= s.nombre%></td>
+			<td><%=link_to "Editar", edit_supplier_path(s.id) %></td>
+			<td><%=link_to "Eliminar", supplier_path(s.id), :confirm=>"¿Desea eliminar este proveedor?", :method => :delete %></td>
+		</tr>
+	<%end%>
+</table>
