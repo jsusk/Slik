@@ -1,0 +1,40 @@
+<h1>Almacén</h1>
+<br><br/>
+<table class="table">
+	<tr>
+		<th>Producto</th>
+		<th>Almacén</td>
+		<th>Dulcería</td>
+		<th>Cantidad</td>	
+		<th>Listo</td>
+	</tr>
+	<%@request.each do |s|%>
+		<tr>
+			<td><%= s.product.name%></td>
+			<td><%= s.product.cantAlm%></td>
+			<td><%= s.product.cantDulc %></td>
+			<td><%= s.amount %></td>
+			<td><%= link_to "Listo", request_path(s.id), :method => :complete %></td>
+		</tr>
+	<%end%>
+</table>
+<h3>Envíos Recientes</h3>
+<br><br/>
+<table class="table">
+	<tr>
+		<th>Producto</th>
+		<th>Cantidad</td>
+		<th>Solicitó</td>	
+		<th>Abasteció</td>
+		<th>Usuario</td>
+	</tr>
+	<%@complete.each do |s|%>
+		<tr>
+			<td><%= s.product.name%></td>
+			<td><%= s.amount %></td>
+			<td><%= s.create_at %></td>
+			<td><%= s.updated_at %></td>
+			<td><%= s.user.nombre %></td>
+		</tr>
+	<%end%>
+</table>
