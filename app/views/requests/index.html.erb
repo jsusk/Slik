@@ -1,5 +1,7 @@
 <h1>Almacén</h1>
-<br><br/>
+<br>
+<%= link_to "Nueva Solicitud", new_request_path, :class=>"btn btn-primary" %>
+<br/>
 <table class="table">
 	<tr>
 		<th>Producto</th>
@@ -7,6 +9,8 @@
 		<th>Dulcería</td>
 		<th>Cantidad</td>	
 		<th>Listo</td>
+		<th>Editar</td>
+		<th>Eliminar</td>
 	</tr>
 	<%@request.each do |s|%>
 		<tr>
@@ -15,6 +19,8 @@
 			<td><%= s.product.cantDulc %></td>
 			<td><%= s.amount %></td>
 			<td><%= link_to "Listo", request_path(s.id), :method => :complete %></td>
+			<td><%= link_to "Editar", edit_request_path(s.id)  %></td>
+			<td><%= link_to "Eliminar", request_path(s.id), :confirm=>"¿Desea eliminar esta peticion?", :method => :delete %></td>
 		</tr>
 	<%end%>
 </table>

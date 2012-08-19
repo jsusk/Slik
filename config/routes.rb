@@ -30,6 +30,8 @@ Slik::Application.routes.draw do
 
   resources :e_sales
 
+  resources :requests
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

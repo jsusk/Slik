@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120801180258) do
+ActiveRecord::Schema.define(:version => 20120818205517) do
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -73,9 +73,22 @@ ActiveRecord::Schema.define(:version => 20120801180258) do
     t.float    "precio"
     t.integer  "cantDulc"
     t.integer  "cantAlm"
+    t.integer  "minimo"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "requests", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "amount"
+    t.boolean  "status"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "requests", ["product_id"], :name => "index_requests_on_product_id"
+  add_index "requests", ["user_id"], :name => "index_requests_on_user_id"
 
   create_table "suppliers", :force => true do |t|
     t.string   "rfc"

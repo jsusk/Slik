@@ -1,8 +1,8 @@
 class RequestsController < ApplicationController
   
   def index
-  	@request = Request.find(:select => "where status=false order by created_at desc")
-  	@complete = Request.find(:select => "where status=true order by updated_at desc limit 5")
+  	@request = Request.where('status="false"').order('created_at desc')
+  	@complete = Request.where('status="true"').limit(5).order('updated_at desc')
   end
 
   def new
@@ -12,14 +12,14 @@ class RequestsController < ApplicationController
   def create
   	@request = Request.new params[:request]
   	if @request.save
-  		redirect_to requests_path, :flash =>{:success=>"Nueva petición enviada"}
+  		redirect_to requests_path, :flash =>{:success=>"Nueva peticion enviada"}
     else
       render :action => "new"
     end
   end
 
   def edit
-	@request = Request.find params[:id]
+	  @request = Request.find params[:id]
   end
 
   def complete
@@ -29,13 +29,13 @@ class RequestsController < ApplicationController
 
   def destroy
   	Request.destroy params[:id]
-	redirect_to requests_path, notice:"Petición Eliminada"
+	  redirect_to requests_path, notice:"Peticion Eliminada"
   end
 
   def update
   	@request = Request.find params[:id]
 	if @request.update_attributes params[:product]
-		redirect_to requests_path, notice:"Petición Modificada"
+		redirect_to requests_path, notice:"Peticion Modificada"
 	else
 	  render :action => "edit"
 	end
