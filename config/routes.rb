@@ -2,6 +2,9 @@ Slik::Application.routes.draw do
 
 
 
+
+  get "requests/index"
+
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   resources :users
@@ -21,9 +24,13 @@ Slik::Application.routes.draw do
     end
   end
 
+  resources :suppliers
+  
   resources :d_sales
 
   resources :e_sales
+
+  resources :requests
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
