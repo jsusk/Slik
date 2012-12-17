@@ -1,46 +1,59 @@
-<h1>Almacén</h1>
+<h1>Dulcero</h1>
 <br>
 <%= link_to "Nueva Solicitud", new_request_path, :class=>"btn btn-primary" %>
 <br/>
+<br />
+<%= form_tag('/requests/complete_request') do |f| %>
 <table class="table">
 	<tr>
 		<th>Producto</th>
-		<th>Almacén</td>
-		<th>Dulcería</td>
-		<th>Cantidad</td>	
-		<th>Listo</td>
-		<th>Editar</td>
-		<th>Eliminar</td>
+		<th>Dulcería</th>
+		<th>Cantidad</th>	
+		<th>Recibido</th>
+		<th>Editar</th>
+		<th>Cancelar</th>
+		<th>Completar</th>
+
 	</tr>
-	<%@request.each do |s|%>
-		<tr>
-			<td><%= s.product.name%></td>
-			<td><%= s.product.cantAlm%></td>
-			<td><%= s.product.cantDulc %></td>
-			<td><%= s.amount %></td>
-			<td><%= link_to "Listo", request_path(s.id), :method => :complete %></td>
-			<td><%= link_to "Editar", edit_request_path(s.id)  %></td>
-			<td><%= link_to "Eliminar", request_path(s.id), :confirm=>"¿Desea eliminar esta peticion?", :method => :delete %></td>
-		</tr>
-	<%end%>
+	
+		<%@request.each do |s|%>
+			<tr>
+				<td><%= s.product.name%></td>
+				<td><%= s.product.cantDulc %></td>
+				<td><%= s.amount %></td>
+				<td>
+					<%= hidden_field_tag 'request_id', s.id %>
+
+					<%= text_field_tag 'cantidad',s.amount,  :maxlength => 3, :style => "width:50px;" %></td>
+				<td><%= link_to "Editar", edit_request_path(s.id)  %></td>
+				<td><%= link_to "Cancelar", request_path(s.id), :confirm=>"¿Desea eliminar esta peticion?", :method => :delete %></td>
+				<td><%= submit_tag 'Completar', :class => "btn btn-primary" %></td>
+			</tr>
+		<%end%>
+
 </table>
+<%end%>
 <h3>Envíos Recientes</h3>
 <br><br/>
 <table class="table">
 	<tr>
 		<th>Producto</th>
-		<th>Cantidad</td>
-		<th>Solicitó</td>	
-		<th>Abasteció</td>
-		<th>Usuario</td>
+		<th>Dulcería</th>
+		<th>Cantidad</th>	
+		<th>Recibido</th>
+		<th>Fecha de pedido</th>
+		<th>Fecha de termino</th>
+		<th>Usuario</th>
+		
 	</tr>
 	<%@complete.each do |s|%>
 		<tr>
 			<td><%= s.product.name%></td>
+			<td><%= s.product.cantDulc %></td>
 			<td><%= s.amount %></td>
-			<td><%= s.create_at %></td>
+			<td><%= s.recibido %></td>
+			<td><%= s.created_at %></td>
 			<td><%= s.updated_at %></td>
-			<td><%= s.user.nombre %></td>
 		</tr>
 	<%end%>
 </table>

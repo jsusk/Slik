@@ -1,0 +1,61 @@
+            requests_index GET    /requests/index(.:format)             requests#index
+                    logout GET    /logout(.:format)                     sessions#destroy
+                     login GET    /login(.:format)                      sessions#new
+                     users GET    /users(.:format)                      users#index
+                           POST   /users(.:format)                      users#create
+                  new_user GET    /users/new(.:format)                  users#new
+                 edit_user GET    /users/:id/edit(.:format)             users#edit
+                      user GET    /users/:id(.:format)                  users#show
+                           PUT    /users/:id(.:format)                  users#update
+                           DELETE /users/:id(.:format)                  users#destroy
+                  sessions GET    /sessions(.:format)                   sessions#index
+                           POST   /sessions(.:format)                   sessions#create
+               new_session GET    /sessions/new(.:format)               sessions#new
+              edit_session GET    /sessions/:id/edit(.:format)          sessions#edit
+                   session GET    /sessions/:id(.:format)               sessions#show
+                           PUT    /sessions/:id(.:format)               sessions#update
+                           DELETE /sessions/:id(.:format)               sessions#destroy
+search_on_product_products GET    /products/search_on_product(.:format) products#search_on_product
+                  products GET    /products(.:format)                   products#index
+                           POST   /products(.:format)                   products#create
+               new_product GET    /products/new(.:format)               products#new
+              edit_product GET    /products/:id/edit(.:format)          products#edit
+                   product GET    /products/:id(.:format)               products#show
+                           PUT    /products/:id(.:format)               products#update
+                           DELETE /products/:id(.:format)               products#destroy
+search_on_p_and_c_e_combos GET    /e_combos/search_on_p_and_c(.:format) e_combos#search_on_p_and_c
+                  e_combos GET    /e_combos(.:format)                   e_combos#index
+                           POST   /e_combos(.:format)                   e_combos#create
+               new_e_combo GET    /e_combos/new(.:format)               e_combos#new
+              edit_e_combo GET    /e_combos/:id/edit(.:format)          e_combos#edit
+                   e_combo GET    /e_combos/:id(.:format)               e_combos#show
+                           PUT    /e_combos/:id(.:format)               e_combos#update
+                           DELETE /e_combos/:id(.:format)               e_combos#destroy
+                 suppliers GET    /suppliers(.:format)                  suppliers#index
+                           POST   /suppliers(.:format)                  suppliers#create
+              new_supplier GET    /suppliers/new(.:format)              suppliers#new
+             edit_supplier GET    /suppliers/:id/edit(.:format)         suppliers#edit
+                  supplier GET    /suppliers/:id(.:format)              suppliers#show
+                           PUT    /suppliers/:id(.:format)              suppliers#update
+                           DELETE /suppliers/:id(.:format)              suppliers#destroy
+                   d_sales GET    /d_sales(.:format)                    d_sales#index
+                           POST   /d_sales(.:format)                    d_sales#create
+                new_d_sale GET    /d_sales/new(.:format)                d_sales#new
+               edit_d_sale GET    /d_sales/:id/edit(.:format)           d_sales#edit
+                    d_sale GET    /d_sales/:id(.:format)                d_sales#show
+                           PUT    /d_sales/:id(.:format)                d_sales#update
+                           DELETE /d_sales/:id(.:format)                d_sales#destroy
+                   e_sales GET    /e_sales(.:format)                    e_sales#index
+                           POST   /e_sales(.:format)                    e_sales#create
+                new_e_sale GET    /e_sales/new(.:format)                e_sales#new
+               edit_e_sale GET    /e_sales/:id/edit(.:format)           e_sales#edit
+                    e_sale GET    /e_sales/:id(.:format)                e_sales#show
+                           PUT    /e_sales/:id(.:format)                e_sales#update
+                           DELETE /e_sales/:id(.:format)                e_sales#destroy
+                  requests GET    /requests(.:format)                   requests#index
+                           POST   /requests(.:format)                   requests#create
+               new_request GET    /requests/new(.:format)               requests#new
+              edit_request GET    /requests/:id/edit(.:format)          requests#edit
+                   request GET    /requests/:id(.:format)               requests#show
+                           PUT    /requests/:id(.:format)               requests#update
+                           DELETE /requests/:id(.:format)               requests#destroy

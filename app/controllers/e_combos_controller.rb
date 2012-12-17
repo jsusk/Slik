@@ -56,4 +56,17 @@ class ECombosController < ApplicationController
     render :json=>result
   end
 
+  def search_on_p
+    products = Product.where("name like '%#{params[:term]}%'")
+    
+    @final = products
+    result = []
+    @final.each do |c|
+      tipo = c.respond_to?(:name) ? :product : :combo
+
+      result << {:label=> (c.respond_to?(:name) ? c.name : c.nombre), :value=>{:id=>c.id, :tipo=>tipo}}
+    end
+    render :json=>result
+  end
+
 end

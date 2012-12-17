@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120818205517) do
+ActiveRecord::Schema.define(:version => 20121217140251) do
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -45,16 +45,6 @@ ActiveRecord::Schema.define(:version => 20120818205517) do
   add_index "d_sales", ["e_sale_id"], :name => "index_d_sales_on_e_sale_id"
   add_index "d_sales", ["product_id"], :name => "index_d_sales_on_product_id"
 
-  create_table "d_suppliers", :force => true do |t|
-    t.integer  "supplier_id"
-    t.integer  "product_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "d_suppliers", ["product_id"], :name => "index_d_suppliers_on_product_id"
-  add_index "d_suppliers", ["supplier_id"], :name => "index_d_suppliers_on_supplier_id"
-
   create_table "e_combos", :force => true do |t|
     t.string   "nombre"
     t.float    "precio"
@@ -81,6 +71,8 @@ ActiveRecord::Schema.define(:version => 20120818205517) do
   create_table "requests", :force => true do |t|
     t.integer  "product_id"
     t.integer  "amount"
+    t.integer  "recibido"
+    t.integer  "enviado"
     t.boolean  "status"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
@@ -90,13 +82,6 @@ ActiveRecord::Schema.define(:version => 20120818205517) do
   add_index "requests", ["product_id"], :name => "index_requests_on_product_id"
   add_index "requests", ["user_id"], :name => "index_requests_on_user_id"
 
-  create_table "suppliers", :force => true do |t|
-    t.string   "rfc"
-    t.string   "nombre"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "users", :force => true do |t|
     t.string   "username",         :null => false
     t.string   "email"
@@ -104,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20120818205517) do
     t.string   "salt"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "tipo"
   end
 
 end

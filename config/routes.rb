@@ -21,6 +21,7 @@ Slik::Application.routes.draw do
   resources :e_combos do
     collection do
       get 'search_on_p_and_c'
+      get 'search_on_p'
     end
   end
 
@@ -30,7 +31,11 @@ Slik::Application.routes.draw do
 
   resources :e_sales
 
-  resources :requests
+  resources :requests do
+    collection do
+      post 'complete_request'
+    end
+  end 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
