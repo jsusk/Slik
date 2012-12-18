@@ -1,7 +1,13 @@
 <%= form_for(@request, :html => {:class=>"well"}) do |f| %>
 	<%= render "shared/error_messages", :target => @request%>
 		<%=f.label :producto%>
-		<%=f.text_field :product%>
+		<%=
+    if @request.product
+      f.text_field :product_name 
+    else 
+      f.text_field :product
+    end
+    %>
 		<%=f.label :cantidad%>
 		<%=f.text_field :amount%>
 		<%=f.hidden_field :product_id%>

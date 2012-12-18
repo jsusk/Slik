@@ -45,7 +45,9 @@ class RequestsController < ApplicationController
 
   def update
   	@request = Request.find params[:id]
-	if @request.update_attributes params[:product]
+    @request.amount = params[:request][:amount]
+
+	if @request.save
 		redirect_to requests_path, notice:"Peticion Modificada"
 	else
 	  render :action => "edit"
