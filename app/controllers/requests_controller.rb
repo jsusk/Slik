@@ -14,7 +14,7 @@ class RequestsController < ApplicationController
     
     @request.amount = params[:request][:amount]
     @request.product_id = params[:request][:product_id]
-    @request.status = false
+    @request.status = nil
     #@request.user_id = current_user.id 
 
   	if @request.save
@@ -33,8 +33,10 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:request_id])
     @request.recibido = params[:cantidad]
   	@request.status = true
-
+    @request.product.cantDulc += @request.recibido
+    @request.product.save 
     @request.save
+
     redirect_to requests_path, :flash => {:success => "Peticion completada"}
   end 
 
