@@ -9,6 +9,7 @@ Slik::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   resources :users
   resources :sessions
+  resources :orders
 
 
   #get "products/index"
