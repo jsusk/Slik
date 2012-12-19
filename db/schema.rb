@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218055434) do
+ActiveRecord::Schema.define(:version => 20121219152317) do
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(:version => 20121218055434) do
   add_index "d_sales", ["e_combo_id"], :name => "index_d_sales_on_e_combo_id"
   add_index "d_sales", ["e_sale_id"], :name => "index_d_sales_on_e_sale_id"
   add_index "d_sales", ["product_id"], :name => "index_d_sales_on_product_id"
+
+  create_table "d_suppliers", :force => true do |t|
+    t.integer  "supplier_id"
+    t.integer  "product_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "d_suppliers", ["product_id"], :name => "index_d_suppliers_on_product_id"
+  add_index "d_suppliers", ["supplier_id"], :name => "index_d_suppliers_on_supplier_id"
 
   create_table "e_combos", :force => true do |t|
     t.string   "nombre"
@@ -91,6 +101,13 @@ ActiveRecord::Schema.define(:version => 20121218055434) do
 
   add_index "requests", ["product_id"], :name => "index_requests_on_product_id"
   add_index "requests", ["user_id"], :name => "index_requests_on_user_id"
+
+  create_table "suppliers", :force => true do |t|
+    t.string   "nombre"
+    t.string   "rfc"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username",         :null => false
