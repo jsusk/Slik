@@ -1,23 +1,18 @@
-<%= form_for(@order, :html => {:class=>"well"}) do |f| %>
+<%= form_tag(orders_path, :html => {:class=>"well"}) do  %>
 	<%= render "shared/error_messages", :target => @order%>
-		<%=f.label :producto%>
-		<%=
-    if @order.d_supplier.product
-      f.text_field :product_name 
-    else 
-      f.text_field :product
-    end
-    %>
-		<%=f.label :cantidad%>
-		<%=f.text_field :cantidad%>
-		<%=f.label :factura%>
-		<%=f.text_field :factura%>
-		<%=f.hidden_field :product_id%>
+		<%=label_tag :producto%>
+		<%=text_field_tag :order_product%>
+      	<%=hidden_field_tag :order_product_id%>
+		<%=label_tag :cantidad%>
+		<%=text_field_tag :cantidad%>
+		<%=label_tag :factura%>
+		<%=text_field_tag :factura%>
+		<%=label_tag :proveedor%>
+		<div id="supplier_combobox_div"></div>
       	<br/>
-		<%=f.submit :class=>"btn"%>
-<%end%>
+      	<%=button_tag "Agregar",:class=>"btn btn-primary",:id=>"order_enviar", :type=>"button"%>
 <h2>Lista</h2>
-<table class="table">
+<table class="table" id="order_lista">
 	<tr>
 		<th>Producto</th>
 		<th>Cantidad</th>	
@@ -26,13 +21,6 @@
 		<th>Eliminar</th>
 
 	</tr>
-		<%@order.each do |s|%>
-			<tr>
-				<td><%= s.d_supplier.product.name%></td>
-				<td><%= s.cantidad %></td>
-				<td><%= s.factura %></td>
-				<td><%= s.d_supplier.supplier.nombre%></td>
-				<td><%= link_to "Eliminar", request_path(s.id), :confirm=>"¿Desea eliminar este pedido?", :method => :delete %></td>
-			</tr>
-		<%end%>
 </table>
+<%=submit_tag "Finalizar",:class=>"btn btn-primary"%>
+<%end%>
