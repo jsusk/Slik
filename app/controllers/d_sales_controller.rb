@@ -1,4 +1,7 @@
 class DSalesController < ApplicationController
+
+  before_filter :require_login
+  
   def new 
     @cart = current_cart 
     @p_and_c = @cart.d_sales.includes(:product, :e_combo)

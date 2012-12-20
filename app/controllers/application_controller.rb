@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
       session[:cart_id] = cart.id
       return cart
     end
+
+    def not_authenticated
+    redirect_to login_url, :alert => "Es necesario iniciar sesion"
+    end
 end

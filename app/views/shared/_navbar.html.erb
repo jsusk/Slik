@@ -2,6 +2,30 @@
   <div class="navbar-inner">
     <ul class="nav pull-right">
     <% if current_user %>
+      <% case current_user.tipo%>
+        <% when "dulcero"%>
+          <li>
+            <%=link_to "Ventas", new_d_sale_path%>
+          </li>
+          <li>
+            <%=link_to "Pedidos", requests_path%>
+          </li>
+        <% when "almacen" %>
+          <li>
+            <%=link_to "Pedidos",  index_alm_requests_path%>
+          </li>
+          <li>
+            <%= link_to "Abastecer", orders_path%>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Usuarios", users_path%>
+          </li>
+          <li>
+            <%= link_to "Proveedores", suppliers_path%>
+          </li>
+
+      <% end%>
       <li>
         <a>Logeado como <%= current_user.username %>.</a>
       </li>
