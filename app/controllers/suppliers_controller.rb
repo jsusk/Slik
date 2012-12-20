@@ -8,8 +8,16 @@ class SuppliersController < ApplicationController
   end
 
   def create
-  	@supplier = Supplier.new params[:supplier]
+  	@supplier = Supplier.new
+    @supplier.rfc = params[:rfc]
+    @supplier.nombre = params[:nombre]
   	if @supplier.save
+      params[:products].each_value do |array|
+        @d_supplier = DSupplier.new
+        @d_supplier.supplier = @supplier
+        @d_supplier.product = Product.where("id="+array)[0]
+        @d_supplier.save
+      end
   		redirect_to suppliers_path, :flash =>{:success=>"Proveedor dado de Alta"}
     else
       render :action => "new"
