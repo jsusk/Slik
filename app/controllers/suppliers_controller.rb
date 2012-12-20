@@ -5,6 +5,8 @@ class SuppliersController < ApplicationController
 
   def new
   	@supplier = Supplier.new
+    @supplier.rfc = ""
+    @supplier.nombre = ""
   end
 
   def create
@@ -12,11 +14,10 @@ class SuppliersController < ApplicationController
     @supplier.rfc = params[:rfc]
     @supplier.nombre = params[:nombre]
   	if @supplier.save
-      params[:products].each_value do |array|
-        @d_supplier = DSupplier.new
-        @d_supplier.supplier = @supplier
-        @d_supplier.product = Product.where("id="+array)[0]
-        @d_supplier.save
+      if params[:products] != nil
+        params[:products].each_value do |array|
+          @supplier.products << Product.where("id="+array)[0]
+        end
       end
   		redirect_to suppliers_path, :flash =>{:success=>"Proveedor dado de Alta"}
     else
@@ -36,7 +37,11 @@ class SuppliersController < ApplicationController
 
   def update
   	@supplier = Supplier.find(params[:id])
-  	if @supplier.update_attributes params[:supplier]
+    @supplier.products = []
+  	if @supplier.update_attributes :rfc=>params[:rfc], :nombre=>params[:nombre]
+      params[:products].each_value do |array|
+        @supplier.products << Product.where("id="+array)[0]
+      end
   		redirect_to suppliers_path, :flash => {success:"Proveedor Actualizado"}
   	else
   		render :action => "edit"
