@@ -1,14 +1,19 @@
-<%= form_tag(suppliers_path, :html => {:class=>"well"}) do %>
+<%= form_tag(params[:action]=="edit" ? supplier_path(@supplier.id) : suppliers_path, :html => {:class=>"well" }, :method => ( params[:action]=="edit" ? :PUT : :POST )) do %>
 	<%= render "shared/error_messages", :target => @supplier%>
 		<%=label_tag :rfc%>
-		<%=text_field_tag :rfc%>
+		<%=text_field_tag :rfc,@supplier.rfc%>
 		<%=label_tag :nombre%>
-		<%=text_field_tag :nombre%>
+		<%=text_field_tag :nombre,@supplier.nombre%>
 		<%=label_tag :productos%>
 		<%=text_field_tag :supplier_product%>
 		<%=hidden_field_tag :supplier_product_id%>
 		<%=button_tag "Agregar",:class=>"btn",:id=>"supplier_enviar",:type=>"button"%>
 		<ul id="supplier_lista">
+			<%@supplier.products.each do |p|%>
+				<li id="p<%=p.id%>">
+					<%=p.name%><input name='products[<%=p.id%>]' type='hidden' value='<%=p.id%>'>&nbsp;&nbsp;<a href='#' class='btn' onclick='$("#p<%=p.id%>").remove()'>Eliminar</a>
+				</li>
+			<%end%>
 		</ul>
       	<br/>
 		<%=submit_tag "Enviar",:class=>"btn btn-primary"%>
