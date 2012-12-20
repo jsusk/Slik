@@ -1,9 +1,15 @@
-<%= form_for(@supplier, :html => {:class=>"well"}) do |f| %>
+<%= form_tag(suppliers_path, :html => {:class=>"well"}) do %>
 	<%= render "shared/error_messages", :target => @supplier%>
-		<%=f.label :rfc%>
-		<%=f.text_field :rfc%>
-		<%=f.label :nombre%>
-		<%=f.text_field :nombre%>
+		<%=label_tag :rfc%>
+		<%=text_field_tag :rfc%>
+		<%=label_tag :nombre%>
+		<%=text_field_tag :nombre%>
+		<%=label_tag :productos%>
+		<%=text_field_tag :supplier_product%>
+		<%=hidden_field_tag :supplier_product_id%>
+		<%=button_tag "Agregar",:class=>"btn",:id=>"supplier_enviar",:type=>"button"%>
+		<ul id="supplier_lista">
+		</ul>
       	<br/>
-		<%=f.submit :class=>"btn"%>
+		<%=submit_tag "Enviar",:class=>"btn btn-primary"%>
 <%end%>
