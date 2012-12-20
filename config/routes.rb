@@ -39,6 +39,9 @@ Slik::Application.routes.draw do
   resources :requests do
     collection do
       post 'complete_request'
+      post 'send_request'
+      get 'index_alm'
+
     end
   end 
 

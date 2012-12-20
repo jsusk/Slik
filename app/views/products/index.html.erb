@@ -10,6 +10,7 @@
   <th>Precio</th>
   <th>Almacén</th>
   <th>Dulcería</th>
+  <th>Total</th>
   <th>Editar</th>
   <th>Eliminar</th>
 </tr>
@@ -23,6 +24,7 @@
 		</td>
 		<td><%=product.cantAlm%></td>
 		<td><%=product.cantDulc%></td>
+    <td><%=product.cantAlm + product.cantDulc%></td>
 		<td>
       <%= link_to 'Editar', edit_product_path(product.id) %>
 		</td>

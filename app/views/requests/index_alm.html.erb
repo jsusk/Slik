@@ -1,0 +1,53 @@
+<h1>Almacen</h1>
+<br>
+<br />
+<table class="table">
+	<tr>
+		<th>Producto</th>
+		<th>Almacen</th>
+		<th>Solicitado</th>	
+		<th>Abastecer</th>
+		<th>Completar</th>
+
+	</tr>
+	
+		<%@request.each do |s|%>
+      <%= form_tag('/requests/send_request') do |f| %>
+			<tr>
+				<td><%= s.product.name%></td>
+				<td><%= s.product.cantAlm %></td>
+				<td><%= s.amount %></td>
+				<td>
+					<%= hidden_field_tag 'request_id', s.id %>
+					<%= text_field_tag 'cantidad',s.amount,  :maxlength => 3, :style => "width:50px;" %>
+        </td>
+				<td><%= submit_tag 'Completar', :class => "btn btn-primary" %></td>
+			</tr>
+      <%end%>
+		<%end%>
+
+</table>
+<h3>Envíos Recientes</h3>
+<br><br/>
+<table class="table">
+	<tr>
+		<th>Producto</th>
+		<th>Almacen</th>
+		<th>Cantidad</th>	
+		<th>Enviado</th>
+		<th>Fecha de pedido</th>
+		<th>Fecha de termino</th>
+		<th>Usuario</th>
+		
+	</tr>
+	<%@complete.each do |s|%>
+		<tr>
+			<td><%= s.product.name%></td>
+			<td><%= s.product.cantAlm %></td>
+			<td><%= s.amount %></td>
+			<td><%= s.enviado %></td>
+			<td><%= s.created_at %></td>
+			<td><%= s.updated_at %></td>
+		</tr>
+	<%end%>
+</table>

@@ -3,7 +3,6 @@
 <%= link_to "Nueva Solicitud", new_request_path, :class=>"btn btn-primary" %>
 <br/>
 <br />
-<%= form_tag('/requests/complete_request') do |f| %>
 <table class="table">
 	<tr>
 		<th>Producto</th>
@@ -17,6 +16,7 @@
 	</tr>
 	
 		<%@request.each do |s|%>
+<%= form_tag('/requests/complete_request') do |f| %>
 			<tr>
 				<td><%= s.product.name%></td>
 				<td><%= s.product.cantDulc %></td>
@@ -24,15 +24,19 @@
 				<td>
 					<%= hidden_field_tag 'request_id', s.id %>
 
-					<%= text_field_tag 'cantidad',s.amount,  :maxlength => 3, :style => "width:50px;" %></td>
-				<td><%= link_to "Editar", edit_request_path(s.id)  %></td>
+					<%= 
+            text_field_tag 'cantidad',s.amount,  :maxlength => 3, :style => "width:50px;" 
+          %></td>
+				<td><%= 
+        
+        link_to "Editar", edit_request_path(s.id)  if s.status == nil%></td>
 				<td><%= link_to "Cancelar", request_path(s.id), :confirm=>"¿Desea eliminar esta peticion?", :method => :delete %></td>
 				<td><%= submit_tag 'Completar', :class => "btn btn-primary" %></td>
 			</tr>
+    <%end%>
 		<%end%>
 
 </table>
-<%end%>
 <h3>Envíos Recientes</h3>
 <br><br/>
 <table class="table">
