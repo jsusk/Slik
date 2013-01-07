@@ -25,6 +25,9 @@ set :repository, "."
 # Checkout, compress and send a local copy
 set :deploy_via, :copy
 set :deploy_to, "/home3/#{user}/rails_apps/#{application}"
+
+#compile assests
+load 'deploy/assets'
  
 # We have all components of the app on the same server
 server domain, :app, :web, :db, :primary => true
