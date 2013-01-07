@@ -35,8 +35,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: slik_production
+  database: igitalci_slik_production
   pool: 5
-  username: igitalci
+  username: igitalci_root
   password: C0d1g0?:)
   socket: /var/lib/mysql/mysql.sock
