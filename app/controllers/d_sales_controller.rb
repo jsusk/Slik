@@ -1,6 +1,7 @@
 class DSalesController < ApplicationController
 
   before_filter :require_login
+  before_filter :require_dulcero
   
   def new 
     @cart = current_cart 

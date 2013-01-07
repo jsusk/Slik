@@ -12,12 +12,21 @@
           </li>
         <% when "almacen" %>
           <li>
+            <%= link_to "Dulcero", new_user_path%>
+          </li>
+          <li>
+            <%= link_to "Productos", products_path%>
+          </li>
+          <li>
             <%=link_to "Pedidos",  index_alm_requests_path%>
           </li>
           <li>
             <%= link_to "Abastecer", orders_path%>
           </li>
         <% else %>
+          <li>
+            <%= link_to "Combos", e_combos_path%> 
+          </li>
           <li>
             <%= link_to "Usuarios", users_path%>
           </li>

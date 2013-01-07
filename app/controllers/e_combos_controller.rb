@@ -1,4 +1,8 @@
 class ECombosController < ApplicationController
+
+  before_filter :require_login
+  before_filter :require_administrador
+
   def index
 		@combos = ECombo.all
   end

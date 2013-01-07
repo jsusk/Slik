@@ -10,7 +10,7 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
     <%= f.label :tipo %>
-    <%= select("user","tipo",["dulcero","almacen"])%>
+    <%= select("user","tipo",["dulcero","almacen", "administrador"])%>
     <br />
   <%= f.submit :class=>"btn btn-primary" %>
 <% end %>

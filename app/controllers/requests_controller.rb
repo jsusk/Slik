@@ -1,4 +1,10 @@
 class RequestsController < ApplicationController
+   
+  before_filter :require_login
+  before_filter :require_dulcero, :only => [:index,:new,:create,:edit,:complete_request,:destroy, :update]
+  before_filter :require_almacen, :only => [:index_alm, :send_request]
+
+  
   
   def index
     @request = Request.where('status is null or status="f"').order('created_at desc')
@@ -72,7 +78,4 @@ class RequestsController < ApplicationController
 	end
   end
 
-  def edit
-	@request = Request.find params[:id]
-  end
 end

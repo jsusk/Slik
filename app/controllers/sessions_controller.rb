@@ -2,6 +2,10 @@ class SessionsController < ApplicationController
   def new
   end
 
+  def session_error
+    
+  end
+
   def create
     user = login(params[:username], params[:password])
     if user

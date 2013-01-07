@@ -1,8 +1,8 @@
 Slik::Application.routes.draw do
 
 
-	root :to => "sessions#new"
-	
+
+
   get "requests/index"
 
   get "logout" => "sessions#destroy", :as => "logout"

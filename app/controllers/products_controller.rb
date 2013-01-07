@@ -1,4 +1,8 @@
 class ProductsController < ApplicationController
+  
+  before_filter :require_login
+  before_filter :require_almacen
+
   def index
 		@products = Product.all
   end

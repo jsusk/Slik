@@ -15,7 +15,6 @@
 //= require_tree .
 //= require jquery.ui.autocomplete
 //= require bootstrap-alert
-
 function add_fields(link,hidden ,association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");

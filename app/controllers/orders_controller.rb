@@ -1,4 +1,8 @@
 class OrdersController < ApplicationController
+
+  before_filter :require_login
+  before_filter :require_almacen
+  
 	def index
 	end
 

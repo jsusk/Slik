@@ -1,4 +1,8 @@
 class SuppliersController < ApplicationController
+  
+  before_filter :require_login
+  before_filter :require_administrador
+
   def index
   	@supplier = Supplier.all
   end
