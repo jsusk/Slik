@@ -37,6 +37,6 @@ production:
   reconnect: false
   database: slik_production
   pool: 5
-  username: root
-  password: pass
+  username: igitalci
+  password: C0d1g0?:)
   socket: /var/run/mysqld/mysqld.sock
