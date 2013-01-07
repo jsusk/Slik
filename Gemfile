@@ -11,6 +11,9 @@ gem 'sqlite3'
 gem 'mysql2'
 gem 'rails-i18n'
 gem 'sorcery'
+
+gem 'capistrano'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
