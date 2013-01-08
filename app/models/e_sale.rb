@@ -4,6 +4,8 @@ class ESale < ActiveRecord::Base
 
   def add_item_from_cart(cart)
     cart.d_sales.each do |item|
+      item.product.cantDulc -= item.cantidad
+      item.product.save
       item.cart_id = nil
       d_sales << item
     end

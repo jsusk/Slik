@@ -30,7 +30,7 @@
 				<td><%= 
         
         link_to "Editar", edit_request_path(s.id)  if s.status == nil%></td>
-				<td><%= link_to "Cancelar", request_path(s.id), :confirm=>"¿Desea eliminar esta peticion?", :method => :delete %></td>
+				<td><%= link_to "Cancelar", request_path(s.id), :confirm=>"¿Desea eliminar esta peticion?", :method => :delete if s.status == nil%></td>
 				<td><%= submit_tag 'Completar', :class => "btn btn-primary" %></td>
 			</tr>
     <%end%>

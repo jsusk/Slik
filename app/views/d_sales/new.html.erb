@@ -19,7 +19,7 @@
   </div>
 </div>
 <h3>Agregar Producto</h3>
-  <%= form_tag d_sales_path, :class=>"well form-search" do %>
+  <%= form_tag d_sales_path, :class=>"well form-search", :onsubmit=>'return validateForm()' do %>
     <%= label_tag :Producto%>
     <%= text_field_tag :search, params[:search]%>
     <%= label_tag :cantidad%>

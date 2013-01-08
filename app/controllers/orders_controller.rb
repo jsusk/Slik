@@ -12,11 +12,12 @@ class OrdersController < ApplicationController
 	end
 
 	def create
+		
 		params[:order].each_value do |array|
 			@order = Order.new
-			@order.d_supplier = DSupplier.where("product_id=" + array[:product] + " and supplier_id=" + array[:supplier])[0];
+			@order.d_supplier = DSupplier.where("product_id=" + array[:product] + " and supplier_id=" + array[:supplier])[0]
 			@order.cantidad = array[:cantidad]
-			@order.d_supplier.product.cantAlm += @order.cantidad;
+			@order.d_supplier.product.cantAlm += @order.cantidad
 			@order.factura = array[:factura]
 			@order.save
 			@order.d_supplier.product.save

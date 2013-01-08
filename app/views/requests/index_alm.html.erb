@@ -19,7 +19,7 @@
 				<td><%= s.amount %></td>
 				<td>
 					<%= hidden_field_tag 'request_id', s.id %>
-					<%= text_field_tag 'cantidad',s.amount,  :maxlength => 3, :style => "width:50px;" %>
+					<%= text_field_tag 'cantidad', (s.amount>s.product.cantAlm ? s.product.cantAlm : s.amount ) ,  :maxlength => 3, :style => "width:50px;" %>
         </td>
 				<td><%= submit_tag 'Completar', :class => "btn btn-primary" %></td>
 			</tr>

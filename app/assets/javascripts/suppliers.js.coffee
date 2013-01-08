@@ -15,6 +15,11 @@ $ ->
 	})
 	$("#supplier_enviar").click(()->
 		lista = $("#supplier_lista")
+		if $("#supplier_product_id").val() == ""
+			$("#supplier_product").val("")
+			alert "Producto no existe"
+			return false
+
 		lista.append(
 					"<li id='p" + $("#supplier_product_id").val() + "'>" + $("#supplier_product").val() + "<input name='products[" + $("#supplier_product_id").val() + "]' type='hidden' value='" + $("#supplier_product_id").val() + "'>&nbsp;&nbsp;<a href='#' class='btn' onclick='$(\"#p" + $("#supplier_product_id").val() + "\").remove()'>Eliminar</a></li>")
 		$("#supplier_product").val("")

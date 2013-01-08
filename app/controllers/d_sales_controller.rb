@@ -15,6 +15,24 @@ class DSalesController < ApplicationController
     
     @cart = current_cart
     @p_and_c = @cart.d_sales.includes(:product, :e_combo)
+    cp = 0
+
+    @cart.d_sales.each do |abc|
+      #puts "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+      #puts "=====================>" + abc.product_id.to_s + "====== " +
+      if abc.product_id == id.to_i
+        cp = abc.cantidad
+
+        puts "===============================H>" + abc.cantidad.to_s
+      end
+    end
+
+    
+
+    if (cantidad.to_i + cp) > (cD = Product.where('id=' + id)[0].cantDulc)
+      cantidad = cD - cp
+    end
+    
 
     @item = @cart.add_product(id,tipo,cantidad)
 

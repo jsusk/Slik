@@ -1,7 +1,7 @@
 class ECombosController < ApplicationController
 
   before_filter :require_login
-  before_filter :require_administrador
+  before_filter :require_administrador, :except=>[:search_on_p_and_c, :search_on_p]
 
   def index
 		@combos = ECombo.all

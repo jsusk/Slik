@@ -15,7 +15,10 @@ $ ->
 			return false
 	})
 	$("#order_enviar").click(()->
-		
+		if !validar()
+			alert "Falta llenar campos o uno de los campos es incorrecto"
+			return false
+
 		row = document.createElement("tr")
 		i = $("#order_lista").children()[0].children.length
 		row.id = "fila" + i;
@@ -29,3 +32,14 @@ $ ->
 	)
 
 llenar_combo = (data)->$("#supplier_combobox_div").html(data)
+
+validar =()->
+	if $("#order_product_id").val() == ""
+		return false
+	if $("#cantidad").val() == "" or !(/^\d*$/).test($("#cantidad").val())
+		return false
+	if $("#factura").val() == ""
+		return false
+	if $("#supplier_combobox option:selected").text() == ""
+		return false
+	return true

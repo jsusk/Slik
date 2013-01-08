@@ -44,6 +44,9 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:request_id])
     @request.recibido = params[:cantidad]
   	@request.status = true
+    
+    @request.recibido = @request.amount if @request.recibido>@request.amount
+
     @request.product.cantDulc += @request.recibido
     @request.product.save 
     @request.save
@@ -54,7 +57,19 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:request_id])
     @request.enviado = params[:cantidad]
   	@request.status = false
+    
+    if @request.amount < @request.enviado 
+      @request.enviado = @request.amount
+    end
+
     @request.product.cantAlm -= @request.enviado
+    
+    if @request.product.cantAlm < 0 
+      @request.enviado += @request.product.cantAlm
+      @request.product.cantAlm = 0
+    end
+
+
     @request.product.save 
     @request.save
 
