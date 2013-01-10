@@ -10,6 +10,7 @@ Slik::Application.routes.draw do
   get "session_error" => "sessions#session_error", :as => "session_error"
   resources :users
   resources :sessions
+  resources :notifications
   resources :orders do
     collection do
       get "search_suppliers"
