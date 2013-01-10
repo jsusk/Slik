@@ -1,0 +1,20 @@
+<h1>Notificaciones</h1>
+Surtir los siguientes productos:
+<br />
+  <br />
+  <table class="table table-striped">
+  <tr>
+    <th>Producto</th>
+    <th>Restante</th>
+    <th></th>
+  </tr>
+<% for prod in @products %>
+    <tr>
+      <td>
+        <%= prod.name %>
+      </td>
+      <td><%=prod.cantDulc%></td>
+      <td><%=link_to 'Crear Petición', new_request_path(:id => prod.id) %></td>
+    </tr>
+<% end %>
+</table>
