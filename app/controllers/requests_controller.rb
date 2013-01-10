@@ -18,6 +18,9 @@ class RequestsController < ApplicationController
 
   def new
   	@request = Request.new
+    if params[:id]
+      @request.product_id = params[:id]
+    end
   end
 
   def create
