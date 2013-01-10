@@ -7,13 +7,13 @@ class RequestsController < ApplicationController
   
   
   def index
-    @request = Request.where('status is null or status="f"').order('created_at desc')
-  	@complete = Request.where('status="t"').limit(5).order('updated_at desc')
+    @request = Request.where('status is null or status=0').order('created_at desc')
+  	@complete = Request.where('status=1').limit(5).order('updated_at desc')
   end
 
   def index_alm
     @request = Request.where('status is null').order('created_at desc')
-  	@complete = Request.where('status="f"').limit(5).order('updated_at desc')
+  	@complete = Request.where('status=0').limit(5).order('updated_at desc')
   end
 
   def new

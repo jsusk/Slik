@@ -1,0 +1,21 @@
+<h1>Irregularidades</h1>
+<br />
+  <br />
+  <table class="table table-striped">
+  <tr>
+    <th>Producto</th>
+    <th>Cantidad solicitada</th>
+    <th>Cantidad enviada</th>
+    <th>Cantidad recibida</th>
+  </tr>
+<% for req in @requests %>
+    <tr>
+      <td>
+        <%= req.product.name %>
+      </td>
+      <td><%=req.amount%></td>
+      <td><%=req.recibido%></td>
+      <td><%=req.enviado%></td>
+    </tr>
+<% end %>
+</table>
