@@ -29,6 +29,31 @@ class ReportsController < ApplicationController
         fila[:costo] = c.precio
         @combos << fila
       end
+  end
+
+def mensual
+      fecha = params[:id]
+      @resultado = []
+
+      Product.all.each do |p|
+        fila = {}
+        fila[:nombre] = p.name
+        fila[:final] = p.cantDulc
+        fila[:cantidad] = DSale.where("(created_at between DATE_FORMAT(?, '%Y-%m-01') and LAST_DAY(?)) and product_id = ?",fecha,fecha,p.id).sum("cantidad")
+        fila[:inicial] = fila[:final] + fila[:cantidad]
+        fila[:costo] = p.precio
+
+        @resultado << fila
+      end
+      @combos = []
+
+      ECombo.all.each do |c|
+        fila = {}
+        fila[:nombre] = c.nombre
+       fila[:cantidad] = DSale.where("(created_at between DATE_FORMAT(?, '%Y-%m-01') and LAST_DAY(?)) and e_combo_id = ?",fecha,fecha,c.id).sum("cantidad")
+        fila[:costo] = c.precio
+        @combos << fila
+      end
 
     
 

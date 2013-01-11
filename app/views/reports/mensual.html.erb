@@ -1,0 +1,63 @@
+<h1>Reporte mensual</h1>
+<h2>Productos</h2>
+<table class="table table-striped">
+<tr>
+  <th>Producto</th><th>Inicial</th><th>Final</th><th>Vendidos</th><th>Costo</th><th>Total</th>
+</tr>
+<%
+  promedio = 0
+  @resultado.each do |fila|
+    
+    %>
+    <tr>
+      <td><%=fila[:nombre]%></td>
+      <td><%=fila[:inicial]%></td>
+      <td><%=fila[:final]%></td>
+      <td><%=fila[:cantidad]%></td>
+      <td><%=fila[:costo]%></td>
+      <%  promedio += fila[:costo] * fila[:cantidad] %>
+      <td><%=fila[:costo] * fila[:cantidad]%></td>
+    </tr>
+    <%
+   end
+%>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><%=promedio%></td>
+    </tr>
+</table>
+
+<h2>Combos</h2>
+<table class="table table-striped">
+<tr>
+  <th>Combo</th><th>Vendidos</th><th>Costo</th><th>Total</th>
+</tr>
+<%
+  promedio2 = 0
+  @combos.each do |fila|
+    
+    %>
+    <tr>
+      <td><%=fila[:nombre]%></td>
+      <td><%=fila[:cantidad]%></td>
+      <td><%=fila[:costo]%></td>
+      <%  promedio2 += fila[:costo] * fila[:cantidad] %>
+      <td><%=fila[:costo] * fila[:cantidad]%></td>
+    </tr>
+    <%
+   end
+%>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><%=promedio2%></td>
+    </tr>
+</table>
+<div class="row">
+  <div class="span3 offset6"><h2>Total: <%=promedio + promedio2%></h2></div>
+</div>

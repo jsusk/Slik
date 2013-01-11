@@ -11,7 +11,11 @@ Slik::Application.routes.draw do
   resources :users
   resources :sessions
   resources :notifications
-  resources :reports
+  resources :reports do
+    member do
+      get "mensual"
+    end
+  end
   resources :orders do
     collection do
       get "search_suppliers"
