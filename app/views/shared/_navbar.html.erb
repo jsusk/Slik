@@ -8,7 +8,10 @@
             <%=link_to "Ventas", new_d_sale_path%>
           </li>
           <li>
-            <%=link_to "Notificaciones", notifications_path%>
+            <a href="<%= notifications_path%>">
+              <!--span class="badge badge-info">8</span-->
+              Notificaciones
+            </a> 
           </li>
           <li>
             <%=link_to "Pedidos", requests_path%>

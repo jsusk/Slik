@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   
   before_filter :require_login
-  before_filter :require_almacen
+  before_filter :require_almacen, :except => [:search_on_product]
 
   def index
 		@products = Product.all
