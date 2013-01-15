@@ -12,7 +12,7 @@ class ESale < ActiveRecord::Base
         puts "===============COMBO==================="
         item.e_combo.products.each do |p|
           puts "=======================>" + p.id.to_s
-          p.cantDulc -= item.cantidad
+          p.cantDulc -= item.cantidad * item.e_combo.d_combos.where('product_id='+p.id.to_s)[0].cantidad
           p.save
         end
       end
