@@ -44,12 +44,24 @@ class DSalesController < ApplicationController
     else
       combo = ECombo.where('id='+id)[0]
       combo.d_combos.each do |dc|
-        cantTot = dc.cantidad
+        cantTot = dc.cantidad * cantidad.to_i
         #puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" + cantTot.to_s
-        @cart.d_sales.each do |abc|          
-          if abc.product_id == dc.product_id
-            cp = abc.cantidad
+        @cart.d_sales.each do |abc|      
+
+          if abc.product_id
+            if abc.product_id == dc.product_id
+              cp += abc.cantidad
+            end
+          else
+            abc.e_combo.d_combos.each do |dcc|
+              if dcc.product_id == id.to_i
+                cp += dcc.cantidad * abc.cantidad
+                #puts "===============================H>" + dc.cantidad.to_s
+              end
+            end
           end
+
+
         end
         cantTot += cp
         #puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" + cantTot.to_s
