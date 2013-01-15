@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
   before_filter :require_login
-  before_filter :require_administrador, :except=>[:corte_diario,:corte_mensual]
-  before_filter :require_almacen, :only => [:corte_diario, :corte_mensual]
+  before_filter :require_administrador, :except=>[:corte_diario,:corte_mensual, :mensual, :diario]
+  before_filter :require_almacen, :only => [:corte_diario, :corte_mensual, :mensual, :diario]
 
   def index
     @requests = Request.where('recibido!=enviado and status=1 and MONTH(DATE(updated_at))=\'' + (Time.now.month).to_s + '\'')
