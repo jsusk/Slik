@@ -12,8 +12,11 @@ Slik::Application.routes.draw do
   resources :sessions
   resources :notifications
   resources :reports do
-    member do
+    collection do
       get "mensual"
+      get "diario"
+      get "corte_diario"
+      get "corte_mensual"
     end
   end
   resources :orders do

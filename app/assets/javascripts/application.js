@@ -14,7 +14,9 @@
 //= require jquery_ujs
 //= require_tree .
 //= require jquery.ui.autocomplete
+//= require jquery.ui.datepicker
 //= require bootstrap-alert
+//= require bootstrap-dropdown
 function add_fields(link,hidden ,association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");

@@ -1,13 +1,14 @@
 class ReportsController < ApplicationController
   before_filter :require_login
-  before_filter :require_administrador
+  before_filter :require_administrador, :except=>[:corte_diario,:corte_mensual]
+  before_filter :require_almacen, :only => [:corte_diario, :corte_mensual]
 
   def index
     @requests = Request.where('recibido!=enviado and status=1 and updated_at>\'' + (Time.now.midnight - 1.month).to_s + '\'')
   end
 
-  def show
-      fecha = params[:id]
+  def diario
+      fecha = params[:date]
       @resultado = []
 
       Product.all.each do |p|
@@ -32,7 +33,7 @@ class ReportsController < ApplicationController
   end
 
 def mensual
-      fecha = params[:id]
+      fecha = params[:date]
       @resultado = []
 
       Product.all.each do |p|
@@ -54,9 +55,12 @@ def mensual
         fila[:costo] = c.precio
         @combos << fila
       end
+  end
 
-    
+  def corte_diario
+  end
 
+  def corte_mensual
 
   end
 
