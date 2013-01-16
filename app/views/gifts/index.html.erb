@@ -1,0 +1,24 @@
+<h1>Excepciones</h1>
+
+<br />
+  <br />
+  <table class="table table-striped">
+  <tr>
+    <th>Usuario</th>
+    <th>Producto</th>
+    <th>Cantidad</th>
+    <th>Fecha<th>
+    <th>Motivo<th>
+  </tr>
+<% for gif in @gifts %>
+    <tr>
+      <td><%=gif.user.username%></td>
+      <td><%=gif.product.name%></td>
+      <td><%=gif.cantidad%></td>
+      <td><%=gif.created_at%></td>
+      <td><%=gif.motivo%></td>
+    </tr>
+<% end %>
+  
+  
+</table>
