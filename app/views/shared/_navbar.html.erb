@@ -19,6 +19,12 @@
               Pedidos
             </a> 
           </li>
+          <li>
+            <a href="<%= new_gift_path%>">
+              <!--span class="badge badge-info">8</span-->
+              Excepciones
+            </a> 
+          </li>
           
         <% when "almacen" %>
           <li>
@@ -50,6 +56,7 @@
             <%= link_to "Proveedores", suppliers_path%>
           </li>
           <li><%= link_to "Irregularidades", reports_path%></li>
+          <li><%= link_to "Bajas", gifts_path%></li>
           
       <% end%>
       <li>

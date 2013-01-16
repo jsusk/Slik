@@ -11,6 +11,7 @@ Slik::Application.routes.draw do
   resources :users
   resources :sessions
   resources :notifications
+  resources :gifts
   resources :reports do
     collection do
       get "mensual"
