@@ -15,8 +15,8 @@ development:
   database: slik_development
   pool: 5
   username: root
-  password: root
-  socket: /var/run/mysql/mysql.sock
+  password: pass
+  socket: /var/run/mysqld/mysqld.sock #/var/run/mysql/mysql.sock
 
 
 

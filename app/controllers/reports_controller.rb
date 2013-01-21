@@ -4,7 +4,7 @@ class ReportsController < ApplicationController
   before_filter :require_almacen, :only => [:corte_diario, :corte_mensual, :mensual, :diario]
 
   def index
-    @requests = Request.where('recibido!=enviado and status=1 and MONTH(DATE(updated_at))=\'' + (Time.now.month).to_s + '\'')
+    @requests = Request.where('recibido!=enviado and status=1 and MONTH(DATE(CONVERT_TZ(updated_at,"+00:00","-06:00") ))=\'' + (Time.now.month).to_s + '\'')
   end
 
   def diario
@@ -15,7 +15,7 @@ class ReportsController < ApplicationController
         fila = {}
         fila[:nombre] = p.name
         fila[:final] = p.cantDulc
-        fila[:cantidad] = DSale.where("DATE(created_at) = ? and product_id = ?",fecha,p.id).sum("cantidad")
+        fila[:cantidad] = DSale.where("DATE(CONVERT_TZ(created_at,'+00:00','-06:00')) = ? and product_id = ?",fecha,p.id).sum("cantidad")
         fila[:inicial] = fila[:final] + fila[:cantidad]
         fila[:costo] = p.precio
 
@@ -26,7 +26,7 @@ class ReportsController < ApplicationController
       ECombo.all.each do |c|
         fila = {}
         fila[:nombre] = c.nombre
-        fila[:cantidad] =  DSale.where("DATE(created_at) = ? and e_combo_id = ?",fecha,c.id).sum("cantidad")
+        fila[:cantidad] =  DSale.where("DATE(CONVERT_TZ(created_at,'+00:00','-06:00')) = ? and e_combo_id = ?",fecha,c.id).sum("cantidad")
         fila[:costo] = c.precio
         @combos << fila
       end
@@ -40,7 +40,7 @@ def mensual
         fila = {}
         fila[:nombre] = p.name
         fila[:final] = p.cantDulc
-        fila[:cantidad] = DSale.where("(created_at between DATE_FORMAT(?, '%Y-%m-01') and LAST_DAY(?)) and product_id = ?",fecha,fecha,p.id).sum("cantidad")
+        fila[:cantidad] = DSale.where("(CONVERT_TZ(created_at,'+00:00','-06:00') between DATE_FORMAT(?, '%Y-%m-01') and LAST_DAY(?)) and product_id = ?",fecha,fecha,p.id).sum("cantidad")
         fila[:inicial] = fila[:final] + fila[:cantidad]
         fila[:costo] = p.precio
 
@@ -51,7 +51,7 @@ def mensual
       ECombo.all.each do |c|
         fila = {}
         fila[:nombre] = c.nombre
-       fila[:cantidad] = DSale.where("(created_at between DATE_FORMAT(?, '%Y-%m-01') and LAST_DAY(?)) and e_combo_id = ?",fecha,fecha,c.id).sum("cantidad")
+       fila[:cantidad] = DSale.where("(CONVERT_TZ(created_at,'+00:00','-06:00') between DATE_FORMAT(?, '%Y-%m-01') and LAST_DAY(?)) and e_combo_id = ?",fecha,fecha,c.id).sum("cantidad")
         fila[:costo] = c.precio
         @combos << fila
       end
